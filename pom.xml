@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.zhaixing.push</groupId>
+    <artifactId>message-push</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>message-push</name>
+    <description>消息推送服务集成</description>
+
+    <developers>
+        <developer>
+            <name>JanYork</name>
+            <email>hi@zhaixing.net</email>
+            <url>https://github.com/JanYork</url>
+            <organization>zhaixing.net</organization>
+            <organizationUrl>https://www.zhaixing.net</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <modules>
+        <module>message-push-support</module>
+        <!--        <module>message-push-app</module>-->
+        <module>message-push-mail</module>
+        <module>message-push-example</module>
+    </modules>
+
+    <properties>
+        <!--  Message Push Support：消息推送抽象支持 -->
+        <message-push-support.version>1.0.0</message-push-support.version>
+        <!--  Spring Boot：Spring Boot 框架 -->
+        <spring-boot.version>3.0.2</spring-boot.version>
+        <!-- Commons Email：邮件发送工具 -->
+        <apache-commons-email.version>1.6.0</apache-commons-email.version>
+        <!--  Caffeine：高性能缓存库 -->
+        <caffeine.version>3.1.8</caffeine.version>
+        <!--  Lombok：简化代码 -->
+        <lombok.version>1.18.30</lombok.version>
+        <!--  项目编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--  Java 版本 -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <!--  Java 版本 -->
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-email</artifactId>
+                <version>${apache-commons-email.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.zhaixing.push</groupId>
+                <artifactId>message-push-support</artifactId>
+                <version>${message-push-support.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
