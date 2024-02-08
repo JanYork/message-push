@@ -5,8 +5,6 @@ import net.zhaixing.push.support.core.account.InMemoryAccountContainer;
 
 /**
  * 邮件账户容器
- * <p>
- *  TODO：需要进行单例模式改造
  *
  * @author JanYork
  * @version 1.0.0
@@ -14,5 +12,23 @@ import net.zhaixing.push.support.core.account.InMemoryAccountContainer;
  * @since 1.0.0
  */
 public class MailAccountContainer extends InMemoryAccountContainer<MailAccount> {
-    public static final MailAccountContainer ACCOUNT_CONTAINER = new MailAccountContainer();
+    /**
+     * 实例预先创建
+     */
+    private static final MailAccountContainer ACCOUNT_CONTAINER = new MailAccountContainer();
+
+    /**
+     * 私有化构造函数，防止外部通过new创建实例
+     */
+    private MailAccountContainer() {
+    }
+
+    /**
+     * 提供一个公共的静态方法返回实例
+     *
+     * @return {@link MailAccountContainer}
+     */
+    public static MailAccountContainer getInstance() {
+        return ACCOUNT_CONTAINER;
+    }
 }
