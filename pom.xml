@@ -32,6 +32,7 @@
         <!--        <module>message-push-app</module>-->
         <module>message-push-mail</module>
         <module>message-push-example</module>
+        <module>message-push-sms-tencent</module>
     </modules>
 
     <properties>
@@ -41,6 +42,8 @@
         <spring-boot.version>3.0.2</spring-boot.version>
         <!-- Commons Email：邮件发送工具 -->
         <apache-commons-email.version>1.6.0</apache-commons-email.version>
+        <!--  Tencent Cloud SDK：腾讯云 SDK -->
+        <tencentcloud-sdk-java.version>3.1.964</tencentcloud-sdk-java.version>
         <!--  Caffeine：高性能缓存库 -->
         <caffeine.version>3.1.8</caffeine.version>
         <!--  Lombok：简化代码 -->
@@ -67,6 +70,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-email</artifactId>
                 <version>${apache-commons-email.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>${tencentcloud-sdk-java.version}</version>
             </dependency>
 
             <dependency>
