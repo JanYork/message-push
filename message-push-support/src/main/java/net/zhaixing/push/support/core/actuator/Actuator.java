@@ -11,12 +11,12 @@ import net.zhaixing.push.support.core.message.Message;
  * @date 2024-01-28
  * @since 1.0.0
  */
-public interface Actuator<T extends Message> {
+public interface Actuator<T extends Message, R> {
     /**
      * 执行方法
      *
      * @param message 消息
      * @throws Exception 异常
      */
-    void execute(T message) throws Exception;
+    R execute(T message) throws Exception;
 }

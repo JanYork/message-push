@@ -1,5 +1,6 @@
 package net.zhaixing.push.support.core.actuator;
 
+import lombok.Getter;
 import net.zhaixing.push.support.core.message.Message;
 
 /**
@@ -12,7 +13,8 @@ import net.zhaixing.push.support.core.message.Message;
  * @date 2024-01-28
  * @since 1.0.0
  */
-public abstract class AbstractActuator<T extends Message, S> implements Actuator<T> {
+@Getter
+public abstract class AbstractActuator<T extends Message, S, R> implements Actuator<T, R> {
     /**
      * 客户端
      */
@@ -29,5 +31,5 @@ public abstract class AbstractActuator<T extends Message, S> implements Actuator
      * @throws Exception 异常
      */
     @Override
-    public abstract void execute(T message) throws Exception;
+    public abstract R execute(T message) throws Exception;
 }
