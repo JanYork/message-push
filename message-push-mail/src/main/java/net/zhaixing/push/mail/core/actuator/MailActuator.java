@@ -5,6 +5,7 @@ import net.zhaixing.push.mail.core.message.MailMessage;
 import net.zhaixing.push.mail.core.processor.MailPostMessageProcessor;
 import net.zhaixing.push.mail.core.processor.MailPreMessageProcessor;
 import net.zhaixing.push.support.core.actuator.AbstractActuator;
+import net.zhaixing.push.support.core.result.PushResult;
 import org.apache.commons.mail.Email;
 
 /**
@@ -27,13 +28,13 @@ public class MailActuator extends AbstractActuator<MailMessage, ActuatorFactory,
      * @throws Exception 异常
      */
     @Override
-    public Void execute(MailMessage message) throws Exception {
+    public PushResult<Void> execute(MailMessage message) throws Exception {
         Email mail = client.createActuator(message);
         MailPreMessageProcessor preProcessor = new MailPreMessageProcessor();
         preProcessor.process(message);
         mail.send();
         MailPostMessageProcessor postProcessor = new MailPostMessageProcessor();
         postProcessor.process(message);
-        return null;
+        return PushResult.success(null);
     }
 }

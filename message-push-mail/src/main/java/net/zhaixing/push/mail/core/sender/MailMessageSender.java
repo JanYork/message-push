@@ -15,7 +15,7 @@ import org.apache.commons.mail.Email;
  * @date 2024-01-28
  * @since 1.0.0
  */
-public class MailMessageSender extends AbstractMessageSender<MailMessage, MailActuator> {
+public class MailMessageSender extends AbstractMessageSender<MailMessage, Void, MailActuator> {
     public MailMessageSender(MailActuatorPool actuatorPool) {
         super(actuatorPool);
     }
