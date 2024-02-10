@@ -3,18 +3,20 @@ package net.zhaixing.push.support.core.sender;
 import net.zhaixing.push.support.core.actuator.MessageActuatorPool;
 import net.zhaixing.push.support.core.actuator.Actuator;
 import net.zhaixing.push.support.core.message.Message;
+import org.checkerframework.checker.units.qual.A;
 
 /**
  * 消息发送器抽象类
  *
  * @param <T> 消息类型
  * @param <A> 执行器类型
+ * @param <R> 发送(执行)结果类型
  * @author JanYork
  * @version 1.0.0
  * @date 2024-01-28
  * @since 1.0.0
  */
-public abstract class AbstractMessageSender<T extends Message, A extends Actuator<T>> implements MessageSender<T> {
+public abstract class AbstractMessageSender<T extends Message, R, A extends Actuator<T, R>> implements MessageSender<T> {
     /**
      * 前置处理器
      */

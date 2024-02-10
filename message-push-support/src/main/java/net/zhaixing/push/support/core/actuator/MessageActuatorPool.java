@@ -8,17 +8,17 @@ import java.util.concurrent.TimeUnit;
 /**
  * 消息执行器池
  *
- * @param <T> 消息执行器类型
+ * @param <Actuator> 消息执行器类型
  * @author JanYork
  * @version 1.0.0
  * @date 2024-01-28
  * @since 1.0.0
  */
-public abstract class MessageActuatorPool<T> {
+public abstract class MessageActuatorPool<Actuator> {
     /**
      * 缓存池
      */
-    private final Cache<String, T> cache;
+    private final Cache<String, Actuator> cache;
 
     public MessageActuatorPool() {
         cache = Caffeine.newBuilder()
@@ -28,13 +28,22 @@ public abstract class MessageActuatorPool<T> {
                 .build();
     }
 
+    public MessageActuatorPool(long maxSize, long expireAfterAccessHours) {
+        cache = Caffeine.newBuilder()
+                .maximumSize(maxSize)
+                .expireAfterAccess(expireAfterAccessHours, TimeUnit.HOURS)
+                .recordStats()
+                .build();
+    }
+
+
     /**
      * 获取实例方法
      *
      * @param key 缓存key
-     * @return {@link T}
+     * @return {@link Actuator}
      */
-    public T getInstance(String key) {
+    public Actuator getInstance(String key) {
         return cache.getIfPresent(key);
     }
 
@@ -44,7 +53,7 @@ public abstract class MessageActuatorPool<T> {
      * @param key      缓存key
      * @param instance 实例对象
      */
-    public void putInstance(String key, T instance) {
+    public void putInstance(String key, Actuator instance) {
         cache.put(key, instance);
     }
 

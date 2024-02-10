@@ -3,6 +3,8 @@ package net.zhaixing.push.support.core.account;
 /**
  * 消息账户容器接口
  *
+ * @param <K> 账户标识类型
+ * @param <V> 账户类型
  * @author JanYork
  * @version 1.0.0
  * @date 2024-01-28

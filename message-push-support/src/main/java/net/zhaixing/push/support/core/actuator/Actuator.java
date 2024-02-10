@@ -1,6 +1,7 @@
 package net.zhaixing.push.support.core.actuator;
 
 import net.zhaixing.push.support.core.message.Message;
+import net.zhaixing.push.support.core.result.PushResult;
 
 /**
  * 消息执行器
@@ -18,5 +19,5 @@ public interface Actuator<T extends Message, R> {
      * @param message 消息
      * @throws Exception 异常
      */
-    R execute(T message) throws Exception;
+    PushResult<R> execute(T message) throws Exception;
 }
