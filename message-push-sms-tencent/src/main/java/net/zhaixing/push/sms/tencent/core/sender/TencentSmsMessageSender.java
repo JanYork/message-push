@@ -4,6 +4,7 @@ import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.sms.v20210111.SmsClient;
+import com.tencentcloudapi.sms.v20210111.models.SendSmsResponse;
 import net.zhaixing.push.sms.tencent.core.account.TencentSmsAccountContainer;
 import net.zhaixing.push.sms.tencent.core.actuator.TencentSmsActuator;
 import net.zhaixing.push.sms.tencent.core.message.TencentSmsMessage;
@@ -21,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * @date 2024-02-08
  * @since 1.0.0
  */
-public class TencentSmsMessageSender extends AbstractMessageSender<TencentSmsMessage, TencentSmsActuator> {
+public class TencentSmsMessageSender extends AbstractMessageSender<TencentSmsMessage, SendSmsResponse, TencentSmsActuator> {
     public TencentSmsMessageSender(MessageActuatorPool<TencentSmsActuator> actuatorPool) {
         super(actuatorPool);
     }

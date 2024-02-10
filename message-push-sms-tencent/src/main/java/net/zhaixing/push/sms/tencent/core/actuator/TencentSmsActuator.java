@@ -5,6 +5,7 @@ import com.tencentcloudapi.sms.v20210111.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20210111.models.SendSmsResponse;
 import net.zhaixing.push.sms.tencent.core.message.TencentSmsMessage;
 import net.zhaixing.push.support.core.actuator.AbstractActuator;
+import net.zhaixing.push.support.core.result.PushResult;
 
 /**
  * 腾讯短信执行器
@@ -26,7 +27,7 @@ public class TencentSmsActuator extends AbstractActuator<TencentSmsMessage, SmsC
      * @throws Exception 异常
      */
     @Override
-    public SendSmsResponse execute(TencentSmsMessage message) throws Exception {
+    public PushResult<SendSmsResponse> execute(TencentSmsMessage message) throws Exception {
         // 构建请求
         SendSmsRequest request = new SendSmsRequest();
         request.setPhoneNumberSet(message.getPhoneNumberSet());
@@ -48,6 +49,6 @@ public class TencentSmsActuator extends AbstractActuator<TencentSmsMessage, SmsC
         }
 
         //  发送请求
-        return client.SendSms(request);
+        return PushResult.success(client.SendSms(request));
     }
 }
