@@ -2,12 +2,14 @@ package net.zhaixing.push.support.core.actuator;
 
 import lombok.Getter;
 import net.zhaixing.push.support.core.message.Message;
+import net.zhaixing.push.support.core.result.PushResult;
 
 /**
  * 消息执行器抽象类
  *
  * @param <T> 消息类型
  * @param <S> 客户端类型
+ * @param <R> 执行结果类型
  * @author JanYork
  * @version 1.0.0
  * @date 2024-01-28
@@ -31,5 +33,5 @@ public abstract class AbstractActuator<T extends Message, S, R> implements Actua
      * @throws Exception 异常
      */
     @Override
-    public abstract R execute(T message) throws Exception;
+    public abstract PushResult<R> execute(T message) throws Exception;
 }
