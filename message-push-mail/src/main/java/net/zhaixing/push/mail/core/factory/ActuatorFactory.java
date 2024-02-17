@@ -29,7 +29,7 @@ public class ActuatorFactory {
      */
     public Email createActuator(MailMessage message) throws EmailException {
         MailType type = message.getMailType();
-        MailAccount account = MailAccountContainer.ACCOUNT_CONTAINER.take(message.getActuatorFlag());
+        MailAccount account = MailAccountContainer.getInstance().take(message.getActuatorFlag());
 
         // 根据邮件类型，创建不同类型的邮件执行器
         Email actuator = switch (type) {
