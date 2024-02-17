@@ -18,10 +18,6 @@ public class TencentSmsMessage extends Message {
      */
     private final String appId;
     /**
-     * 短信应用密钥
-     */
-    private final String appKey;
-    /**
      * 签名名称
      */
     private final String signName;
@@ -58,7 +54,6 @@ public class TencentSmsMessage extends Message {
     protected TencentSmsMessage(TencentSmsMessageBuilder builder) {
         super(builder);
         this.appId = builder.appId;
-        this.appKey = builder.appKey;
         this.signName = builder.signName;
         this.templateId = builder.templateId;
         this.templateParamSet = builder.templateParamSet;
@@ -81,11 +76,6 @@ public class TencentSmsMessage extends Message {
          * 短信应用ID
          */
         private String appId;
-
-        /**
-         * 短信应用密钥
-         */
-        private String appKey;
 
         /**
          * 短信签名
@@ -130,17 +120,6 @@ public class TencentSmsMessage extends Message {
          */
         public TencentSmsMessageBuilder appId(String appId) {
             this.appId = appId;
-            return this;
-        }
-
-        /**
-         * 设置短信应用密钥
-         *
-         * @param appKey 短信应用密钥
-         * @return {@link TencentSmsMessageBuilder}
-         */
-        public TencentSmsMessageBuilder appKey(String appKey) {
-            this.appKey = appKey;
             return this;
         }
 
