@@ -3,6 +3,7 @@ package net.zhaixing.push.support.core.sender;
 import net.zhaixing.push.support.core.actuator.MessageActuatorPool;
 import net.zhaixing.push.support.core.actuator.Actuator;
 import net.zhaixing.push.support.core.message.Message;
+import net.zhaixing.push.support.core.result.PushResult;
 import org.checkerframework.checker.units.qual.A;
 
 /**
@@ -16,7 +17,7 @@ import org.checkerframework.checker.units.qual.A;
  * @date 2024-01-28
  * @since 1.0.0
  */
-public abstract class AbstractMessageSender<T extends Message, R, A extends Actuator<T, R>> implements MessageSender<T> {
+public abstract class AbstractMessageSender<T extends Message, R, A extends Actuator<T, R>> implements MessageSender<T, R> {
     /**
      * 前置处理器
      */
@@ -70,19 +71,20 @@ public abstract class AbstractMessageSender<T extends Message, R, A extends Actu
      * @param message 消息
      */
     @Override
-    public void send(Message message) {
+    public PushResult<R> send(Message message) {
         if (preProcessor != null) {
             preProcessor.process((T) message);
         }
         try {
             A actuator = takeActuator(message.getActuatorFlag());
-            actuator.execute((T) message);
+            return actuator.execute((T) message);
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (postProcessor != null) {
             postProcessor.process((T) message);
         }
+        return PushResult.failure(message.getActuatorFlag() + "执行器执行异常");
     }
 
     @Override

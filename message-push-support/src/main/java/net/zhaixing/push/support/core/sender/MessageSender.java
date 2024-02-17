@@ -1,6 +1,7 @@
 package net.zhaixing.push.support.core.sender;
 
 import net.zhaixing.push.support.core.message.Message;
+import net.zhaixing.push.support.core.result.PushResult;
 
 /**
  * 消息发送器接口
@@ -10,13 +11,13 @@ import net.zhaixing.push.support.core.message.Message;
  * @date 2024-01-27
  * @since 1.0.0
  */
-public interface MessageSender<T extends Message> {
+public interface MessageSender<T extends Message, R> {
     /**
      * 发送消息
      *
      * @param message 消息
      */
-    void send(Message message);
+    PushResult<R> send(Message message);
 
     /**
      * 设置前置处理器
