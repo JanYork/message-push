@@ -13,7 +13,7 @@ zx:
           flag: "mail-1001"
           auth:
             username: "747945307@qq.com"
-            password: "1111111111111111"
+            password: "leqsvylojanyorktrcqbbaf"
           socket:
             timeout: 60000
             connection-timeout: 30000
@@ -25,3 +25,10 @@ zx:
             pop-username: "user@example.com"
             pop-password: "password"
           debug: false
+    sms:
+      tencent:
+        account:
+          - secret-id: AKIDxt9JOWjt9MIC10x
+            secret-key: qz4CwTyNer2896
+            region: ap-beijing
+            flag: "sms-1001"

@@ -8,14 +8,9 @@ import org.apache.commons.mail.EmailAttachment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/example/")
-public class ExampleApi {
+public class MailExampleApi {
     @Resource
     private MailMessageSender mailMessageSender;
 

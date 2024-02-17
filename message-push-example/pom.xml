@@ -22,5 +22,11 @@
             <artifactId>message-push-mail</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.zhaixing.push</groupId>
+            <artifactId>message-push-sms-tencent</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 </project>
