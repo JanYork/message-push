@@ -1,7 +1,6 @@
 package net.zhaixing.push.sms.tencent.core.model;
 
 import lombok.Data;
-import lombok.Getter;
 import net.zhaixing.push.support.core.account.MessageAccount;
 
 /**
@@ -62,7 +61,7 @@ public class TencentSmsAccount implements MessageAccount {
     /**
      * 地域
      */
-    private String region;
+    private String region = "ap-guangzhou";
 
     /**
      * 账户标识
